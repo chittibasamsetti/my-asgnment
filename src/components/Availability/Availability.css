@@ -7,6 +7,7 @@
     background-color: rgb(240, 240, 237);
     box-shadow: 0px 0px 10px silver;
     margin-right: 50px;
+    border-radius: 10px;
 }
 .containr ul{
     /* margin-left: 170px; */

@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <userContext.Provider value={{ details, setDetails, timings }}>
-      <Router basename="/my-asgnment"> {/* Set basename for GitHub Pages */}
+      <Router basename="/my-asgnment"> 
         <Routes>
           <Route
             path="/"
