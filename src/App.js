@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import { userContext } from "./AppContext";  // Correct import from AppContext
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { userContext } from "./AppContext";  
 import BookingForm from "./components/BookingForm/BookingForm";
 import Conformation from "./components/Conformation/Conformation";
 import Availability from "./components/Availability/Availability";
@@ -11,18 +11,20 @@ export default function App() {
 
   return (
     <userContext.Provider value={{ details, setDetails, timings }}>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
-              <BookingForm />
-              <Availability />
-            </div>
-          }
-        />
-        <Route path="/conformation" element={<Conformation />} />
-      </Routes>
+      <Router basename="/my-asgnment"> {/* Set basename for GitHub Pages */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+                <BookingForm />
+                <Availability />
+              </div>
+            }
+          />
+          <Route path="/conformation" element={<Conformation />} />
+        </Routes>
+      </Router>
     </userContext.Provider>
   );
 }
