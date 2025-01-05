@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { userContext } from "./AppContext";  // Correct import from AppContext
+import BookingForm from "./components/BookingForm/BookingForm";
+import Conformation from "./components/Conformation/Conformation";
+import Availability from "./components/Availability/Availability";
 
-function App() {
+export default function App() {
+  const [details, setDetails] = useState([]);
+  const timings = ["11:00", "12:00", "1:00", "2:00", "3:00", "7:00", "8:00", "9:00", "10:00"];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <userContext.Provider value={{ details, setDetails, timings }}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+              <BookingForm />
+              <Availability />
+            </div>
+          }
+        />
+        <Route path="/conformation" element={<Conformation />} />
+      </Routes>
+    </userContext.Provider>
   );
 }
-
-export default App;
